@@ -3,6 +3,7 @@ package com.garfieldchou.androidweardemo;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.wearable.view.WatchViewStub;
+import android.util.Log;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -18,6 +19,16 @@ public class MainActivity extends Activity {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
                 mTextView = (TextView) stub.findViewById(R.id.text);
+
+                if (findViewById(R.id.rect_layout) != null) {
+
+                    Log.i("Info", "Rectangular layout");
+
+                } else {
+
+                    Log.i("Info", "Round layout");
+
+                }
             }
         });
     }
