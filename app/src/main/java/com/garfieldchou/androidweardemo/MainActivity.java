@@ -1,7 +1,10 @@
 package com.garfieldchou.androidweardemo;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.wearable.view.CardFragment;
 import android.support.wearable.view.WatchViewStub;
 import android.util.Log;
 import android.widget.TextView;
@@ -20,15 +23,16 @@ public class MainActivity extends Activity {
             public void onLayoutInflated(WatchViewStub stub) {
                 mTextView = (TextView) stub.findViewById(R.id.text);
 
-                if (findViewById(R.id.rect_layout) != null) {
+                FragmentManager fragmentManager = getFragmentManager();
 
-                    Log.i("Info", "Rectangular layout");
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                } else {
+                CardFragment cardFragment = CardFragment.create("Hello Rob!", "How are you today?", android.R.drawable.btn_plus);
 
-                    Log.i("Info", "Round layout");
+                fragmentTransaction.add(R.id.frame_layout, cardFragment);
 
-                }
+                fragmentTransaction.commit();
+
             }
         });
     }
